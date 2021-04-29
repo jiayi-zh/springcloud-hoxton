@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "custom.localIp",
+      "type": "java.lang.String",
+      "description": "Description for custom.localIp."
+  }
+] }
