@@ -11,14 +11,24 @@ spring:
 eureka:
   instance:
     hostname: 127.0.0.1
-    # Eureka Server 剔除过期服务(未发送心跳)的时间间隔
-    lease-expiration-duration-in-seconds: 10
+    ### 缓存 ###
+    # eureka server 认为服务过期的超时时间, 默认 90 s
+    lease-expiration-duration-in-seconds: 90
+  server:
+    wait-time-in-ms-when-sync-empty: 0
+    # 关闭自我保护机制
+    enable-self-preservation: false
+    ### 缓存 ###
+    # 使用只读缓存, client从readOnlyCacheMap更新数据，false则跳过readOnlyCacheMap直接从readWriteCacheMap更新
+    use-read-only-response-cache: true
+    # 缓存从 readWriteCacheMap 更新到 readOnlyCacheMap 的周期, 默认 30 s
+    response-cache-update-interval-ms: 30000
+    # 服务端执行 evict() 剔除过期实例的周期, 默认 30 s
+    eviction-interval-timer-in-ms: 30000
+    # readOnlyCacheMap 是使用 Guava Cache , 其键的过期时间为 180 s
+    response-cache-auto-expiration-in-seconds: 10
   client:
     registerWithEureka: false
     fetchRegistry: false
     serviceUrl:
       defaultZone: http://${custom.localIp}:${server.port}/eureka/
-  server:
-    wait-time-in-ms-when-sync-empty: 0
-    # 关闭自我保护机制
-    enable-self-preservation: false
