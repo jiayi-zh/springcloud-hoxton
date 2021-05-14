@@ -6,6 +6,7 @@
         <module>springcloud-hystrix</module>
         <module>springcloud-eureka</module>
         <module>basis-netty</module>
+        <module>xxx-job</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
