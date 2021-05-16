@@ -1,13 +1,14 @@
-package com.bat.jyzh.springcloudhoxton.xxxjob.controller;
+package com.bat.jyzh.xxxjob.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.bat.jyzh.xxxjob.config.XxxJobProperties;
 import com.xxl.job.core.biz.model.*;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +20,7 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 /**
- * TODO
+ * 执行器 - 执行定时任务
  *
  * @author ZhengYu
  * @version 1.0 2021/5/14 11:45
@@ -29,20 +30,20 @@ import java.util.concurrent.TimeUnit;
 @RequestMapping("/xxx-job")
 public class XxxJobExecutorController {
 
-    @Value("${custom.schedulingCenter.rootAddr}")
-    private String rootAddr;
+    @Autowired
+    private XxxJobProperties xxxJobProperties;
 
-//    @PostMapping("/beat")
-//    public ReturnT<String> beat() {
-//        log.info("调度中心向执行器发送了心跳 ... ");
-//        return ReturnT.SUCCESS;
-//    }
-//
-//    @PostMapping("/idleBeat")
-//    public ReturnT<String> idleBeat(@RequestBody IdleBeatParam body) {
-//        log.info("调度中心向执行器发送了忙碌检测, 详情: {}", JSONObject.toJSONString(body));
-//        return ReturnT.SUCCESS;
-//    }
+    @PostMapping("/beat")
+    public ReturnT<String> beat() {
+        log.info("调度中心向执行器发送了心跳 ... ");
+        return ReturnT.SUCCESS;
+    }
+
+    @PostMapping("/idleBeat")
+    public ReturnT<String> idleBeat(@RequestBody IdleBeatParam body) {
+        log.info("调度中心向执行器发送了忙碌检测, 详情: {}", JSONObject.toJSONString(body));
+        return ReturnT.SUCCESS;
+    }
 
     private OkHttpClient okHttpClient = new OkHttpClient();
     private MediaType mediaType = MediaType.parse("application/json; charset=utf-8");
@@ -62,7 +63,7 @@ public class XxxJobExecutorController {
             param.setExecuteResult(ReturnT.SUCCESS);
             Request request = new Request.Builder()
                     .header("Content-Type", "application/json")
-                    .url(rootAddr + "/callback")
+                    .url(xxxJobProperties.getAddress() + "/callback")
                     .post(okhttp3.RequestBody.create(mediaType, JSONObject.toJSONBytes(new ArrayList<HandleCallbackParam>(1) {{
                         add(param);
                     }})))
@@ -82,11 +83,11 @@ public class XxxJobExecutorController {
         return ReturnT.SUCCESS;
     }
 
-//    @PostMapping("/kill")
-//    public ReturnT<String> idleBeat(@RequestBody KillParam body) {
-//        log.info("调度中心向执行器发送了关闭任务请求, 详情: {}", JSONObject.toJSONString(body));
-//        return ReturnT.SUCCESS;
-//    }
+    @PostMapping("/kill")
+    public ReturnT<String> idleBeat(@RequestBody KillParam body) {
+        log.info("调度中心向执行器发送了关闭任务请求, 详情: {}", JSONObject.toJSONString(body));
+        return ReturnT.SUCCESS;
+    }
 
     @PostMapping("/log")
     public ReturnT<LogResult> log(@RequestBody LogParam body) {

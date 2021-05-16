@@ -1,17 +1,17 @@
-package com.bat.jyzh.springcloudhoxton.xxxjob;
+package com.bat.jyzh.xxxjob.examples;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * TODO
+ * xxx-job stater 示例
  *
  * @author ZhengYu
- * @version 1.0 2021/5/14 11:59
+ * @version 1.0 2021/5/16 0:44
  **/
 @SpringBootApplication
-public class XxxJobApplication {
+public class XxxJobExampleApplication {
     public static void main(String[] args) {
-        SpringApplication.run(XxxJobApplication.class, args);
+        SpringApplication.run(XxxJobExampleApplication.class, args);
     }
 }
