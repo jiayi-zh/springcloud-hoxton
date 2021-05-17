@@ -5,10 +5,9 @@ spring:
   application:
     name: springcloud-business-service
 
-#xxx:
-#  job:
-#    admin:
-#      host: 127.0.0.1
-#      port: 8080
-#      prefix: xxl-job-admin
-#      address: http://127.0.0.1:8080/xxl-job-admin
+xxx:
+  job:
+    admin:
+      host: 127.0.0.1
+      port: 8080
+      prefix: xxl-job-admin
