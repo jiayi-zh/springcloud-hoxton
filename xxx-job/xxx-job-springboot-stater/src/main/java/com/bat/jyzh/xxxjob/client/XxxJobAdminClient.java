@@ -8,5 +8,4 @@ package com.bat.jyzh.xxxjob.client;
  **/
 public interface XxxJobAdminClient {
 
-
 }

@@ -1,16 +1,13 @@
 package com.bat.jyzh.xxxjob.processor;
 
-import com.alibaba.fastjson.JSONObject;
 import com.bat.jyzh.xxxjob.annotation.IScheduleJob;
-import com.bat.jyzh.xxxjob.config.XxxJobProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.boot.context.event.ApplicationStartedEvent;
 import org.springframework.context.event.EventListener;
-import org.springframework.stereotype.Component;
+import org.springframework.core.annotation.AnnotationUtils;
 
 import java.util.Map;
 import java.util.Optional;
@@ -23,31 +20,27 @@ import java.util.concurrent.ConcurrentHashMap;
  * @version 1.0 2021/5/16 9:43
  **/
 @Slf4j
-@Component
 public class JobRegisterProcessor implements BeanPostProcessor {
 
     @Value("${spring.application.name}")
     private String applicationName;
-
-    @Autowired
-    private XxxJobProperties xxxJobProperties;
 
     Map<String, Object> scheduleTaskCacheMap = new ConcurrentHashMap<>();
 
     @Override
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
         Optional.of(bean)
-                .map(Object::getClass)
-                .map(clazz -> clazz.getAnnotation(IScheduleJob.class))
-                .ifPresent(iScheduleJob -> {
-                    log.info("{} 注册任务需检查并注册到调度中心 {}", JSONObject.toJSONString(iScheduleJob), JSONObject.toJSONString(bean));
-                    scheduleTaskCacheMap.put(iScheduleJob.uniqueJobKey(), bean);
-                });
-        return null;
+                .map(obj -> AnnotationUtils.findAnnotation(obj.getClass(), IScheduleJob.class))
+                .ifPresent(iScheduleJob -> scheduleTaskCacheMap.put(iScheduleJob.uniqueJobKey(), bean));
+        return bean;
     }
 
     @EventListener
-    public void onApplicationStartEvent(ApplicationStartedEvent applicationStartedEvent) {
-        System.out.println("开始向调度中心注册");
+    public void handleApplicationStartEvent(ApplicationStartedEvent applicationStartedEvent) {
+        log.info("开始向调度中心注册定时任务信息, 执行器个数: 1, 定时任务个数: {}", scheduleTaskCacheMap.size());
+
+        log.info("检测并创建执行器 -> {}", applicationName);
+
+        scheduleTaskCacheMap.forEach((k, v) -> log.info("检测、创建、开启 定时任务 -> {}", k));
     }
 }

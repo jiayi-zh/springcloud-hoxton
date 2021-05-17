@@ -7,7 +7,6 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
-import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 import java.util.Optional;
@@ -20,7 +19,6 @@ import java.util.Optional;
  **/
 @Slf4j
 @Aspect
-@Component
 public class JobCronFlushAspect {
 
     @Pointcut("@annotation(com.bat.jyzh.xxxjob.annotation.JobCronFlush)")
@@ -29,6 +27,7 @@ public class JobCronFlushAspect {
 
     @Around("jobCronFlushPointCut()")
     public Object jobCronFlushPointAround(ProceedingJoinPoint joinPoint) throws Throwable {
+
         MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
         String uniqueJobKey = Optional.of(methodSignature)
                 .map(MethodSignature::getMethod)
@@ -40,7 +39,7 @@ public class JobCronFlushAspect {
         if (StringUtils.hasText(uniqueJobKey) && result instanceof String) {
             String cron = (String) result;
             if (StringUtils.hasText(cron)) {
-                log.info("任务{}执行时间刷新{}", uniqueJobKey, cron);
+                log.info("任务{}执行时间更新为: {}", uniqueJobKey, cron);
                 // TODO 更新
             }
         }

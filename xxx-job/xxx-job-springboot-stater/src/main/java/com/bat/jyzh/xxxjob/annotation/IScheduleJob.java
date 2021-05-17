@@ -25,7 +25,7 @@ public @interface IScheduleJob {
     ExecutorRouteStrategyEnum executorRouteStrategy = ExecutorRouteStrategyEnum.RANDOM;
 
     // Cron
-    String cron();
+    String cron() default "";
 
     // 任务超时时间，单位秒
     int timeout() default -1;
@@ -37,8 +37,8 @@ public @interface IScheduleJob {
     String responsiblePerson();
 
     // 报警邮件
-    String alarmEmail();
+    String alarmEmail() default "";
 
     // 任务参数
-    String param();
+    String param() default "";
 }
