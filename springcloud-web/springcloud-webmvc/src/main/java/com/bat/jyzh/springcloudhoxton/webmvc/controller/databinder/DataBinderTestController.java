@@ -26,9 +26,10 @@ public class DataBinderTestController {
     private static final DateTimeFormatter DF = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
     private static final DateTimeFormatter DF_SHOW = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
-    @ModelAttribute
-    public void runBeforeHandle(HttpServletRequest request) {
+    @ModelAttribute(value = "initKey")
+    public String runBeforeHandle(HttpServletRequest request) {
         log.info("before handle ...");
+        return "initValue";
     }
 
     @InitBinder
@@ -59,7 +60,9 @@ public class DataBinderTestController {
      */
     @ResponseBody
     @GetMapping("/date/to/datetime")
-    public void testFormatData(LocalDateTime date, CustomReq customReq) {
-        log.info("com.bat.jyzh.springcloudhoxton.webmvc.controller.databinder.DataBinderTestController.testFormatData: {} {}", date, customReq);
+    public String testFormatData(LocalDateTime date, CustomReq customReq, HttpServletRequest request) {
+        String initValue = (String) request.getAttribute("initKey");
+        log.info("com.bat.jyzh.springcloudhoxton.webmvc.controller.databinder.DataBinderTestController.testFormatData: {} {} {}", date, customReq, initValue);
+        return "success";
     }
 }

@@ -1,2 +1,8 @@
 server:
   port: 8080
+
+javax:
+  validation:
+    constraints:
+      NotNull:
+        message: "参数不能为空"
