@@ -8,6 +8,7 @@
         <module>basis-netty</module>
         <module>xxx-job</module>
         <module>springcloud-web</module>
+        <module>springcloud-gateway</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

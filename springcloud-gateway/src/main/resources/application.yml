@@ -1,0 +1,44 @@
+server:
+  port: 15000
+
+spring:
+  application:
+    name: springcloud-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          # 是否与服务发现组件进行结合, 通过 ServiceId 转发到具体的服务实例
+          enabled: true
+          # 当注册中心为 Eureka 时, 启动小写的 ServiceId 进行基于服务路由的转发
+          lower-case-service-id: true
+      routes:
+#          - id: route_id_001
+#            uri: https://www.baidu.com/
+#            metadata: { k1: "v1", k2: "v2" }
+#            order: 1
+      #          predicates:
+      #            - name: predicate1
+      #              args: { k1: "v1", k2: "v2" }
+      #          filters:
+      #            - name: filter1
+      #              args: { k1: "v1", k2: "v2" }
+
+eureka:
+  instance:
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.9.105:8761/eureka/
+
+logging:
+  level:
+    org.springframework.cloud.gateway: debug
+
+management:
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure:
+        include: gateway
