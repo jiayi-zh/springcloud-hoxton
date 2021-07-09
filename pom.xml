@@ -5,15 +5,17 @@
     <modules>
         <module>springcloud-hystrix</module>
         <module>springcloud-eureka</module>
-        <module>basis-netty</module>
         <module>xxx-job</module>
         <module>springcloud-web</module>
         <module>springcloud-gateway</module>
+        <module>orm-mybatis</module>
+        <module>net-netty</module>
+        <module>messagemiddleware</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.3.11.BUILD-SNAPSHOT</version>
+        <version>2.2.0.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.bat.jyzh</groupId>
@@ -24,7 +26,7 @@
     <description>Spring Cloud Hoxton Learn</description>
     <properties>
         <java.version>1.8</java.version>
-        <spring-cloud.version>Hoxton.BUILD-SNAPSHOT</spring-cloud.version>
+        <spring-cloud.version>Hoxton.SR12</spring-cloud.version>
     </properties>
     <dependencies>
         <dependency>
@@ -85,14 +87,6 @@
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
-        </repository>
-        <repository>
-            <id>spring-snapshots</id>
-            <name>Spring Snapshots</name>
-            <url>https://repo.spring.io/snapshot</url>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
         </repository>
     </repositories>
     <pluginRepositories>

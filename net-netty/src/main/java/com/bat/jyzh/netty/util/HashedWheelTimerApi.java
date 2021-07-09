@@ -1,4 +1,4 @@
-package com.bat.jyzh.springcloudhoxton.netty.util;
+package com.bat.jyzh.netty.util;
 
 import io.netty.util.HashedWheelTimer;
 import io.netty.util.Timeout;

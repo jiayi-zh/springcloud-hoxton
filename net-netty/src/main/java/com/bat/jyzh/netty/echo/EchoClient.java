@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-package com.bat.jyzh.springcloudhoxton.netty;
+package com.bat.jyzh.netty.echo;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.*;
