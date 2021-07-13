@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>org.springframework.cloud.netflix.eureka.server.InstanceRegistry</OriginalElement>
+  <nodes>
+    <node x="260.0" y="162.0">com.netflix.eureka.registry.PeerAwareInstanceRegistry</node>
+    <node x="94.73333333333329" y="0.0">com.netflix.discovery.shared.LookupService</node>
+    <node x="460.0" y="324.0">org.springframework.cloud.netflix.eureka.server.InstanceRegistry</node>
+    <node x="189.0" y="400.0">com.netflix.eureka.lease.Lease</node>
+    <node x="166.7333333333333" y="81.0">com.netflix.eureka.registry.InstanceRegistry</node>
+    <node x="0.0" y="400.0">com.netflix.appinfo.InstanceInfo</node>
+    <node x="0.0" y="162.0">com.netflix.eureka.registry.AbstractInstanceRegistry</node>
+    <node x="683.0" y="162.0">org.springframework.beans.factory.Aware</node>
+    <node x="243.99999999999997" y="243.0">com.netflix.eureka.registry.PeerAwareInstanceRegistryImpl</node>
+    <node x="528.0" y="162.0">javax.inject.Singleton</node>
+    <node x="266.73333333333335" y="0.0">com.netflix.eureka.lease.LeaseManager</node>
+    <node x="611.0" y="243.0">org.springframework.context.ApplicationContextAware</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.netflix.eureka.registry.PeerAwareInstanceRegistryImpl" target="com.netflix.eureka.registry.AbstractInstanceRegistry">
+      <point x="-93.33333333333331" y="-15.5" />
+      <point x="290.66666666666663" y="218.0" />
+      <point x="120.0" y="218.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="org.springframework.context.ApplicationContextAware" target="org.springframework.beans.factory.Aware">
+      <point x="0.0" y="-15.5" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="com.netflix.eureka.registry.PeerAwareInstanceRegistry" target="com.netflix.eureka.registry.InstanceRegistry">
+      <point x="0.0" y="-15.5" />
+      <point x="384.0" y="137.0" />
+      <point x="298.7333333333333" y="137.0" />
+      <point x="44.0" y="15.5" />
+    </edge>
+    <edge source="com.netflix.eureka.registry.InstanceRegistry" target="com.netflix.discovery.shared.LookupService">
+      <point x="-44.0" y="-15.5" />
+      <point x="210.7333333333333" y="56.0" />
+      <point x="170.7333333333333" y="56.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="com.netflix.eureka.registry.InstanceRegistry" target="com.netflix.eureka.lease.LeaseManager">
+      <point x="44.0" y="-15.5" />
+      <point x="298.7333333333333" y="56.0" />
+      <point x="338.73333333333335" y="56.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="com.netflix.eureka.registry.PeerAwareInstanceRegistryImpl" target="javax.inject.Singleton">
+      <point x="93.33333333333337" y="-15.5" />
+      <point x="477.33333333333337" y="218.0" />
+      <point x="588.0" y="218.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="org.springframework.cloud.netflix.eureka.server.InstanceRegistry" target="org.springframework.context.ApplicationContextAware">
+      <point x="44.0" y="-15.5" />
+      <point x="592.0" y="299.0" />
+      <point x="727.0" y="299.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="org.springframework.cloud.netflix.eureka.server.InstanceRegistry" target="com.netflix.eureka.registry.PeerAwareInstanceRegistryImpl">
+      <point x="-44.0" y="-15.5" />
+      <point x="504.0" y="299.0" />
+      <point x="384.0" y="299.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="com.netflix.eureka.registry.PeerAwareInstanceRegistryImpl" target="com.netflix.eureka.registry.PeerAwareInstanceRegistry">
+      <point x="0.0" y="-15.5" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="com.netflix.eureka.registry.AbstractInstanceRegistry" target="com.netflix.eureka.registry.InstanceRegistry">
+      <point x="0.0" y="-15.5" />
+      <point x="120.0" y="137.0" />
+      <point x="210.7333333333333" y="137.0" />
+      <point x="-44.0" y="15.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="421.5" y="215.5" />
+  <SelectedNodes>
+    <node>org.springframework.cloud.netflix.eureka.server.InstanceRegistry</node>
+  </SelectedNodes>
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

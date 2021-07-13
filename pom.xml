@@ -11,11 +11,12 @@
         <module>orm-mybatis</module>
         <module>net-netty</module>
         <module>messagemiddleware</module>
+        <module>cache</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.2.0.RELEASE</version>
+        <version>2.3.12.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.bat.jyzh</groupId>
