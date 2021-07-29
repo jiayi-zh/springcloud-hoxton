@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>org.springframework.cloud.netflix.eureka.CloudEurekaClient</OriginalElement>
+  <nodes>
+    <node x="222.0" y="0.0">com.netflix.discovery.shared.LookupService</node>
+    <node x="50.0" y="0.0">com.google.inject.ImplementedBy</node>
+    <node x="140.0" y="81.0">com.netflix.discovery.EurekaClient</node>
+    <node x="52.0" y="162.0">com.netflix.discovery.DiscoveryClient</node>
+    <node x="44.0" y="243.0">org.springframework.cloud.netflix.eureka.CloudEurekaClient</node>
+    <node x="0.0" y="81.0">javax.inject.Singleton</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.netflix.discovery.EurekaClient" target="com.google.inject.ImplementedBy">
+      <point x="-36.0" y="-15.5" />
+      <point x="176.0" y="56.0" />
+      <point x="126.0" y="56.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="com.netflix.discovery.EurekaClient" target="com.netflix.discovery.shared.LookupService">
+      <point x="36.0" y="-15.5" />
+      <point x="248.0" y="56.0" />
+      <point x="298.0" y="56.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="com.netflix.discovery.DiscoveryClient" target="com.netflix.discovery.EurekaClient">
+      <point x="42.0" y="-15.5" />
+      <point x="178.0" y="137.0" />
+      <point x="212.0" y="137.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="org.springframework.cloud.netflix.eureka.CloudEurekaClient" target="com.netflix.discovery.DiscoveryClient">
+      <point x="0.0" y="-15.5" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="com.netflix.discovery.DiscoveryClient" target="javax.inject.Singleton">
+      <point x="-42.0" y="-15.5" />
+      <point x="94.0" y="137.0" />
+      <point x="60.0" y="137.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="187.0" y="137.0" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

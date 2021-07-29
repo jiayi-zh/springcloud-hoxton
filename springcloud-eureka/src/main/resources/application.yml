@@ -1,5 +1,7 @@
 server:
   port: 8761
+  tomcat:
+    accept-count: 1024
 
 custom:
   localIp: 127.0.0.1

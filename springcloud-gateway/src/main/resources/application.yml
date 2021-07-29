@@ -12,17 +12,13 @@ spring:
           enabled: true
           # 当注册中心为 Eureka 时, 启动小写的 ServiceId 进行基于服务路由的转发
           lower-case-service-id: true
-      routes:
-#          - id: route_id_001
-#            uri: https://www.baidu.com/
-#            metadata: { k1: "v1", k2: "v2" }
-#            order: 1
-      #          predicates:
-      #            - name: predicate1
-      #              args: { k1: "v1", k2: "v2" }
-      #          filters:
-      #            - name: filter1
-      #              args: { k1: "v1", k2: "v2" }
+#      routes:
+#          - id: face-business-server
+#            uri: lb://face-business-server
+#            predicates:
+#              - Path=/api/face-business-server/**
+#            filters:
+#              - StripPrefix=2
 
 eureka:
   instance:
@@ -30,7 +26,7 @@ eureka:
     prefer-ip-address: true
   client:
     serviceUrl:
-      defaultZone: http://192.168.9.27:8761/eureka/
+      defaultZone: http://192.168.9.102:8761/eureka/
 
 logging:
   level:
